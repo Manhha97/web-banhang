@@ -1,0 +1,23 @@
+{
+      "login" : "Login",
+      "cart" : "Cart",
+      "wish-list" : "Wish list",
+      "category" : "Category",
+      "choose" : "Choose",
+      "author" : "Author",
+      "nxb" : "Publisher",
+      "type" : "Type",
+      "search" : "Search",
+      "logout" :"Logout",
+      "info":"Infomation",
+      "highlight" :"Highlight",
+      "show":"Show",
+      "special":"Special",
+      "new" : "New",
+      "sale":"Sale",
+      "buy":"Buy",
+      "limit":"Limited",
+      "sort":"Sort",
+      "home":"Home"
+
+}

@@ -1,0 +1,344 @@
+/*** ESSENTIAL STYLES ***/
+#block_top_menu {
+    padding-top: 25px;
+}
+@media (max-width: 1199px) {
+    #block_top_menu {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+.sf-contener {
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+.sf-menu,
+.sf-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+
+.sf-menu {
+    position: relative;
+    background: url("../img/menu_bg.png") no-repeat scroll 2px 0 transparent;
+    height: 71px;
+    margin: 0 auto 0 -43px;
+    padding-left: 35px;
+    width: 1065px;
+}
+@media (max-width: 1200px) {
+    .sf-menu {
+        background: url("../img/megnor/bg_menu.png") repeat-x scroll 0 0 transparent;
+        height: 59px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .sf-menu {
+        display: none;
+        background: #64A500;
+        height: auto;
+        color: #fff;
+        border-bottom: 5px solid #322C20;
+        width: 100%;
+        position:absolute;
+        padding: 10px 0;
+    }
+}
+
+.sf-menu ul {
+    position: absolute;
+    top: -999em;
+    background: #fff;
+}
+@media (max-width: 767px) {
+    .sf-menu ul {
+        position: relative;
+    }
+}
+
+.sf-menu ul li {
+    width: 100%;
+}
+
+.sf-menu li:hover {
+    visibility: inherit;
+    /* fixes IE7 'sticky bug' */
+}
+
+.sf-menu > li {
+    float: left;
+    margin-top: 8px;
+}
+@media (max-width: 767px) {
+    .sf-menu > li {
+        float: none;
+        position: relative;
+        border-right: none;
+        margin-top: 0;
+    }
+    .sf-menu > li span {
+        position: absolute;
+        right: 6px;
+        top: 9px;
+        width: 23px;
+        height: 23px;
+        z-index: 2;
+        cursor: pointer;
+    }
+    .sf-menu > li span:after {
+        font-family: "FontAwesome";
+        content: "\f067";
+        font-size: 14px;
+    }
+    .sf-menu > li span.active:after {
+        content: "\f068";
+    }
+}
+.sf-menu > li > a {
+    border-bottom: none;
+    display: block;
+    font: 700 18px/22px Rokkitt, sans-serif;
+    padding: 11px 20px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+}
+@media (max-width: 767px) {
+    .sf-menu > li > a {
+        padding: 10px 20px 5px;
+        font: 400 16px/22px Rokkitt, sans-serif;
+    }
+}
+.sf-menu > li.sfHover > a,
+.sf-menu > li > a:hover, .sf-menu > li.sfHoverForce > a {
+    background: #64A500;
+    border-bottom-color: #666666;
+    color: white;
+}
+
+.sf-menu > li:last-child {
+    border: none;
+}
+
+.sf-menu li ul li ul {
+    padding: 5px;
+    width: 200px;
+    left: 193px;
+    border-bottom: 5px solid #322C20;
+    background: none repeat scroll 0 0 #64A500;
+    -webkit-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+}
+@media (max-width: 767px) {
+    .sf-menu li ul li ul {
+        width: 100%;
+        left: 0 !important;
+        top: 0 !important;
+        display: block !important;
+        border: none;
+    }
+}
+.sf-menu li ul li ul a {
+    position: relative;
+    font-weight: bold;
+    font: 600 16px/20px Rokkitt, sans-serif;
+    color: #fff;
+    padding: 4px 10px 6px;
+    display: block;
+}
+.sf-menu li ul li ul a:hover {
+    color: #000;
+}
+
+.sf-menu li ul {
+    display: none;
+    left: 0;
+    top: 43px;
+    /* match top ul list item height */
+    z-index: 99;
+    padding: 12px 0px 18px 0px;
+}
+@media (max-width: 767px) {
+    .sf-menu li ul {
+        top: 0;
+    }
+}
+
+.sf-menu li li li ul {
+    padding: 5px;
+}
+
+.sf-menu li li li ul {
+    width: 220px;
+}
+@media (max-width: 767px) {
+    .sf-menu li li li ul {
+        width: 100%;
+    }
+}
+
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+    top: -999em;
+}
+
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+    left: 190px;
+    /* match ul width */
+    top: 0;
+}
+
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+    top: -999em;
+}
+
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+    left: 190px;
+    /* match ul width */
+    top: 0;
+}
+
+.sf-menu > li > ul {
+    padding: 5px;
+    width: 200px;
+    border-bottom: 5px solid #322C20;
+    background: #64A500;
+    position: absolute;
+}
+@media (max-width: 767px) {
+    .sf-menu > li > ul {
+        position: relative;
+        width: 100%;
+        border: none;
+        padding-left: 30px;
+    }
+}
+.sf-menu > li > ul > li {
+    padding: 4px 4px;
+}
+.sf-menu > li > ul > li > a {
+    text-transform: capitalize;
+    font: 600 16px/20px Rokkitt, sans-serif;
+    color: #fff;
+    display: block;
+}
+.sf-menu > li > ul > li > a:hover {
+    color: #000;
+}
+
+.sf-menu ul li a.sf-with-ul:after {
+    font-family: "FontAwesome";
+    content: "\f0da";
+    font-size: 12px;
+    position: absolute;
+    right: 7px;
+    top: 0px;
+}
+
+.sf-menu > li > ul > li {
+    float: left;
+    width: 100%;
+}
+@media (max-width: 479px) {
+    .sf-menu > li > ul > li {
+        width: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .sf-menu > li > ul > li.first-in-line-lg {
+        clear: left;
+    }
+}
+@media (min-width: 480px) and (max-width: 767px) {
+    .sf-menu > li > ul > li.first-in-line-xs {
+        clear: left;
+    }
+}
+
+.sf-menu > li > ul > li#category-thumbnail {
+    width: 100% !important;
+    clear: both;
+    overflow: hidden;
+    padding: 0;
+    margin: 5px 0 0 0;
+}
+.sf-menu > li > ul > li#category-thumbnail > div {
+    float: left;
+    padding: 10px 0  0 0;
+    width: 100%;
+}
+@media (max-width: 479px) {
+    .sf-menu > li > ul > li#category-thumbnail > div {
+        width: 100%;
+        text-align: center;
+    }
+}
+.sf-menu > li > ul > li#category-thumbnail > div img {
+    max-width: 100%;
+    display: block;
+}
+
+.cat-title {
+    display: none;
+}
+@media (max-width: 767px) {
+    .cat-title {
+        display: block;
+        font: 600 18px/22px Rokkitt, sans-serif;
+        text-transform: uppercase;
+        color: white;
+        display: block;
+        padding: 20px 15px 17px;
+        cursor: pointer;
+        background: url("../../../../img/megnor/bg_menu.png") repeat-x scroll 0 0 transparent;
+        position: relative;
+    }
+    .cat-title:after {
+        display: block;
+        font-family: "FontAwesome";
+        content: "\f0c9 ";
+        position: absolute;
+        right: 15px;
+        top: 20px;
+        font-size: 24px;
+    }
+}
+
+.sf-menu li.sf-search {
+    border: none;
+}
+.sf-menu li.sf-search input {
+    display: inline;
+    padding: 0 13px;
+    height: 30px;
+    line-height: 30px;
+    background: white;
+    margin: 13px 10px 0 0;
+    font-size: 13px;
+    color: #9c9b9b;
+    border: 1px solid #d6d4d4;
+}
+
+.sf-menu
+> li:first-child {
+    margin-left: 7px;
+}
+@media (max-width: 1200px) {
+    .sf-menu
+    > li:first-child {
+        margin-left: 0;
+    }
+}

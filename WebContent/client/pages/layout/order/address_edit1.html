@@ -1,0 +1,49 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form-horizontal bv-form" action="/order?action=edit-order-detail" role="form" id="address-info" novalidate="novalidate">
+            <div class="form-group row">
+                <label for="full_name" class="col-md-3">Họ tên </label>
+                <div class="col-md-9">
+                    <input required type="text" name="name" class="form-control" id="full_name" value="" placeholder="Nhập họ tên">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="phone" class="col-md-3">Số điện thoại</label>
+                <div class="col-md-9">
+                    <input required type="text" name="phone" class="form-control" id="phone" value="" placeholder="Nhập số điện thoại">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="address" class="col-md-3">Địa chỉ </label>
+                <div class="col-md-9">
+                    <input required type="text" name="address" class="form-control" id="address" value="" placeholder="Nhập địa chỉ">
+                    <input type="hidden" id="destination" name="destination">
+                    <div id="result"></div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="type_ship" class="col-md-3">Hình thức giao hàng </label>
+                <div class="col-md-9">
+                    <select class="form-control" name="deliveryId" id="type_ship">
+                        <option value="1">Giao hàng tiêu chuẩn</option>
+                        <option value="2">Giao hàng nhanh</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3"></label>
+                <div class="col-md-9">
+                    <i style="font-size: 11px;">Để nhận hàng thuận tiện hơn, bạn vui lòng chọn hình thức giao hàng.</i>
+                </div>
+            </div>
+            <input type="hidden" name="to" value="Bắc Giang">
+            <input type="hidden" name="distance" value="100.65">
+            <div class="form-group row">
+                <div class="col-lg-offset-3 col-md-9">
+                    <button type="button" class="btn btn-default btn-custom2 cancel-edit-address">Hủy bỏ</button>
+                    <button type="submit" class="btn btn-primary btn-custom3">Cập nhật</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

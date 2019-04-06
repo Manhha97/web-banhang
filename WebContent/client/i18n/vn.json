@@ -1,0 +1,23 @@
+{
+      "login" : "Đăng nhập",
+      "cart" : "Giỏ hàng",
+      "wish-list" : "Yêu thích",
+      "category" : "Danh mục sản phẩm",
+      "choose" : "Tùy chọn",
+      "author" : "Tác giả",
+      "nxb" : "Nhà xuất bản",
+      "type" : "Thể loại",
+      "search" : "Tìm kiếm",
+      "logout" : "Đăng xuất",
+      "info" : "Thông tin cá nhân",
+      "highlight":"NÔI BẬT",
+      "show":"Hiển thị",
+      "special":"Đặc biệt",
+      "new" : "Hàng mới",
+      "sale":"Đại hạ giá",
+      "buy":"Mua nhiều",
+      "limit":"Hàng có hạn",
+      "sort":"Sắp xếp theo",
+      "home":"Trang chủ"
+
+}
