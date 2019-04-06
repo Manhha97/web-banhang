@@ -47,13 +47,14 @@
                             <div class="col-md-9">
                                 <%
                                     if(action.equalsIgnoreCase("edit-info")){
+                                    	Customer cuss = (Customer)session.getAttribute("currentCustomer");
                                 %>
                                 <div class="account-profile register-form">
                                     <form class="content" method="post" action="/customer?action=edit-info" id="edit-account">
                                         <div class="form-group">
                                             <label class="control-label" for="full_name">Họ tên </label>
                                             <div class="input-wrap">
-                                                <input type="text" name="name" required class="form-control" id="full_name" value="${currentCustomer.name}" placeholder="Họ tên">
+                                                <input <% if(cuss.getApiId() != null ) out.print("disabled"); %> type="text" name="name" required class="form-control" id="full_name" value="${currentCustomer.name}" placeholder="Họ tên">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
@@ -94,7 +95,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="input-wrap margin">
-                                                <button type="submit" class="btn btn-info btn-block btn-custom3">Cập nhật</button>
+                                                <button <% if(cuss.getApiId() != null ) out.print("disabled"); %> type="submit" class="btn btn-info btn-block btn-custom3">Cập nhật</button>
                                             </div>
                                         </div>
                                     </form>
@@ -102,6 +103,7 @@
                                 <%
                                     }else if (action.equalsIgnoreCase("my-order")){
                                         List<Bill> bills = (List<Bill>) request.getAttribute("bills");
+                                        if(bills.size() > 0){
                                 %>
                                 <%----%>
                                     <ul class="list-group">
@@ -116,7 +118,11 @@
                                         <%}%>
                                     </ul>
                                 <%
-                                    }
+                                    } else {
+                                %>
+                                	<h1>Bạn chưa có đơn hàng nào!</h1>
+                                <%
+                                    } }
                                 %>
                             </div>
                         </div>

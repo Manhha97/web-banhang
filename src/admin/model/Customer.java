@@ -6,7 +6,8 @@ public class Customer {
     private String phone;
     private String email;
     private String password;
-
+    private String apiId;
+    private String type;
 
     public Customer() {
     }
@@ -23,7 +24,23 @@ public class Customer {
         this.password = password;
     }
 
-    public Integer getId() {
+    public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getApiId() {
+		return apiId;
+	}
+
+	public void setApiId(String apiId) {
+		this.apiId = apiId;
+	}
+
+	public Integer getId() {
         return id;
     }
 

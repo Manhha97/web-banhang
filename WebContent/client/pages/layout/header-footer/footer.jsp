@@ -87,5 +87,104 @@
 <script type="text/javascript" src="client/js/util.js"></script>
 <script type="text/javascript" src="client/js/ajax_cart.js"></script>
 <script type="text/javascript" src="client/js/ajax_wish_list.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+   
+<script type="text/javascript">
+	(function(d, s, id) {
+	 	var js, fjs = d.getElementsByTagName(s)[0];
+	 	if (d.getElementById(id)) return;
+	 	js = d.createElement(s); js.id = id;
+	 	js.src = "//connect.facebook.net/en_US/sdk.js";
+	 	fjs.parentNode.insertBefore(js, fjs);
+	 }(document, 'script', 'facebook-jssdk'));
+	function fbLogout() {
+		FB.getLoginStatus(function(response) {
+	        if (response && response.status === 'connected') {
+	            FB.logout(function(response) {
+	            	location.replace('/customer?action=logout');
+	            });
+	        }
+	    });
+	}
+	function loginfb() {
+		FB.init({ 
+		 	appId : '2034583493504662',
+		 	cookie : true,
+		 	xfbml : true,
+		 	version : 'v2.2'
+		 });
+        FB.login(function(responses) {
+            if(responses.authResponse)
+            {
+            	FB.api('/me?fields=name,email', function(response) {
+            		$.ajax({
+  			    	  url : '/customer?action=google-login',
+  			     	  type : 'post',
+  			     	  data : {
+  			     		  id : response.id,
+  			     		  email : response.email,
+  			     		  name : response.name,
+  			     		  type : 'facebook'
+  			     	  },
+  			     	  success : function(res) {
+  			     		 var next_page = $('input[name="next_page"]').val();
+  			     		 if(res === true || res === 'true'){
+  		                   if(next_page === null || next_page === ''){
+  		                       next_page = '/home';
+  		                   }
+  		                   location.href = next_page;
+  		               	}
+  			     	  }
+  			      })
+        		});
+            }
+        });
+
+    }
+
+///
+function simpleLogout(){
+	location.replace('/customer?action=logout');
+}
+/// GOOGLE LOGIN
+		var clicked=false;//Global Variable
+		function ClickLogin()
+		{
+		    clicked=true;
+		}
+		function onSignIn(googleUser) {
+		    if (clicked) {
+		    	var profile = googleUser.getBasicProfile();
+			      $.ajax({
+			    	  url : '/customer?action=google-login',
+			     	  type : 'post',
+			     	  data : {
+			     		  id : profile.Eea,
+			     		  email : profile.U3,
+			     		  name : profile.ig,
+			     		  type : 'google'
+			     	  },
+			     	  success : function(res) {
+			     		 var next_page = $('input[name="next_page"]').val();
+			     		 if(res === true || res === 'true'){
+		                   if(next_page === null || next_page === ''){
+		                       next_page = '/home';
+		                   }
+		                   location.href = next_page;
+		               }
+			     	  }
+			      })
+		    }
+		};
+      function init() {
+    	  gapi.load('auth2', function() { // Ready. });
+    	})
+      }
+      function googleLogout() {
+    	  gapi.auth2.init()
+          gapi.auth2.getAuthInstance().disconnect();
+          location.replace('/customer?action=logout');
+       }
+   </script>
 </body>
 </html>

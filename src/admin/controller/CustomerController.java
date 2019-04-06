@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/customer")
@@ -46,7 +47,10 @@ public class CustomerController extends HttpServlet {
             if (action.equalsIgnoreCase("my-order")){
                 if(customer != null){
                     OrderDetail orderDetail = orderService.getAddressOrder(customer);
-                    List<Bill> bills = orderService.getListBill(orderDetail.getId());
+                    List<Bill> bills = new ArrayList<Bill>();
+                    if(orderDetail != null) {
+                    	bills = orderService.getListBill(orderDetail.getId());
+                    }
                     req.setAttribute("bills", bills);
                     req.getRequestDispatcher("/client/pages/customer-info.jsp").forward(req, resp);
                 }
@@ -75,6 +79,19 @@ public class CustomerController extends HttpServlet {
                     resp.getWriter().write(gson.toJson(true));
                 }else
                     resp.getWriter().write(gson.toJson(false));
+            }
+            if(action.equalsIgnoreCase("google-login")) {
+            	String name = req.getParameter("name");
+                String id = req.getParameter("id");
+                String email = req.getParameter("email");
+                String type = req.getParameter("type");
+                Customer cus = new Customer();
+                cus.setApiId(id);
+                cus.setName(name);
+                cus.setEmail(email);
+                cus.setType(type);
+                session.setAttribute("currentCustomer", cus);
+                resp.getWriter().write(gson.toJson(true));
             }
             if (action.equalsIgnoreCase("register")){
                 String un = req.getParameter("email");

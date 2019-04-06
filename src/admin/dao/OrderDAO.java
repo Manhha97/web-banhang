@@ -12,7 +12,7 @@ import java.util.List;
 
 public class OrderDAO {
     public Boolean insert(OrderDetail detailOrder){
-        String sql = "INSERT INTO order_detail (customer_id, `name`, phone, address, delivery_id, distance) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO order_detail (customer_id, `name`, phone, address, delivery_id, distance, apiId) VALUES (?,?,?,?,?,?,?)";
         try {
             Connection connection = ConnectionUtil.open();
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -22,6 +22,7 @@ public class OrderDAO {
             statement.setString(4, detailOrder.getAddress());
             statement.setInt(5, detailOrder.getDeliveryId());
             statement.setDouble(6, detailOrder.getDistance());
+            statement.setString(7, detailOrder.getApiId());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -29,7 +30,7 @@ public class OrderDAO {
         return false;
     }
     public Boolean edit(OrderDetail orderDetail){
-        String sql="update order_detail set `name`=?, phone=?, address=?,delivery_id=?,distance=? where customer_id = ?";
+        String sql="update order_detail set `name`=?, phone=?, address=?,delivery_id=?,distance=? where customer_id = ? and api_id = ?";
         try {
             Connection connection = ConnectionUtil.open();
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -39,6 +40,7 @@ public class OrderDAO {
             statement.setInt(4, orderDetail.getDeliveryId());
             statement.setDouble(5, orderDetail.getDistance());
             statement.setInt(6,orderDetail.getCustomerId());
+            statement.setString(6,orderDetail.getApiId());
             return statement.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,11 +49,21 @@ public class OrderDAO {
     }
     public OrderDetail getAddressOrder(Customer customer){
         OrderDetail orderDetail = null;
-        String sql = "SELECT od.*,dt.amout FROM order_detail od, customer c, delivery_type dt  WHERE od.customer_id = c.id AND dt.id = od.delivery_id AND c.id = ?";
+        String sql = "SELECT od.*,dt.amout FROM order_detail od, delivery_type dt  WHERE dt.id = od.delivery_id AND ";
+        if(customer.getId() == null && customer.getApiId() != null) {
+        	sql += " od.api_id = ?";
+        } else {
+        	sql += " od.customer_id = ?";
+        }
         try {
             Connection connection = ConnectionUtil.open();
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, customer.getId());
+            
+            if(customer.getId() == null && customer.getApiId() != null) {
+            	statement.setString(1, customer.getApiId());
+            } else {
+            	statement.setInt(1, customer.getId());
+            }
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
                 orderDetail = new OrderDetail();

@@ -22,9 +22,11 @@
                             <button type="submit" class="btn btn-info btn-block">Đăng nhập</button>
                         </div>
                         <div class="form-group last" style="font-size: 20px;">
-                            <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/demo-login-google&response_type=code
-		&client_id=744044093656-difc2ma2nlrt3oul8du724kdait41phf.apps.googleusercontent.com&approval_prompt=force" style="color: red">   Login With Google</a>
-							<a href="" style="float: right;color: blue">login with facebook</a>
+                            <div
+							  class="g-signin2" onclick="ClickLogin()"
+							  data-onsuccess="onSignIn">
+							</div>
+							<div onclick="loginfb();">login fb</div>
                         </div>
                         
                     </form>
@@ -59,8 +61,12 @@
     </div>
 </div>
 <%@include file="layout/header-footer/footer.jsp"%>
+
+
 <script !src="">
     $(document).ready(function () {
+    	
+    	
         $('.toggle-form').click(function (e) {
             e.preventDefault();
            $(this).parents('form').siblings().show();

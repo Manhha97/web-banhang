@@ -9,20 +9,36 @@ public class OrderDetail {
     private Integer customerId;
     private Double distance;
     private Integer amount;
+    private String apiId;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(String name, String phone, String address, Integer deliveryId, Integer customerId, Double distance) {
-        this.name = name;
-        this.phone = phone;
-        this.address = address;
-        this.deliveryId = deliveryId;
-        this.customerId = customerId;
-        this.distance = distance;
-    }
+    
 
-    public Integer getId() {
+    public OrderDetail(String name, String phone, String address, Integer deliveryId, Integer customerId,
+			Double distance,  String apiId) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
+		this.deliveryId = deliveryId;
+		this.customerId = customerId;
+		this.distance = distance;
+		this.apiId = apiId;
+	}
+
+
+
+	public String getApiId() {
+		return apiId;
+	}
+
+	public void setApiId(String apiId) {
+		this.apiId = apiId;
+	}
+
+	public Integer getId() {
         return id;
     }
 

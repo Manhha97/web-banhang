@@ -85,7 +85,8 @@ public class OrderController extends HttpServlet {
                 Double distance = Double.parseDouble(req.getParameter("distance"));
                 Integer deliveryId = Integer.parseInt(req.getParameter("deliveryId"));
                 Integer customerId = customer.getId();
-                OrderDetail detailOrder = new OrderDetail(name, phone, address, deliveryId, customerId, distance);
+                String apiId = customer.getApiId();
+                OrderDetail detailOrder = new OrderDetail(name, phone, address, deliveryId, customerId, distance, apiId);
                 if (orderService.insert(detailOrder)){
                     resp.getWriter().write(gson.toJson(true));
                 }else resp.getWriter().write(gson.toJson(false));
@@ -97,7 +98,8 @@ public class OrderController extends HttpServlet {
                 Double distance = Double.parseDouble(req.getParameter("distance"));
                 Integer deliveryId = Integer.parseInt(req.getParameter("deliveryId"));
                 Integer customerId = customer.getId();
-                OrderDetail detailOrder = new OrderDetail(name, phone, address, deliveryId, customerId, distance);
+                String apiId = customer.getApiId();
+                OrderDetail detailOrder = new OrderDetail(name, phone, address, deliveryId, customerId, distance, apiId);
                 if (orderService.edit(detailOrder)){
                     resp.getWriter().write(gson.toJson(true));
                 }else resp.getWriter().write(gson.toJson(false));
