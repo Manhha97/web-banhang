@@ -12,17 +12,25 @@ import java.util.List;
 
 public class OrderDAO {
     public Boolean insert(OrderDetail detailOrder){
-        String sql = "INSERT INTO order_detail (customer_id, `name`, phone, address, delivery_id, distance, apiId) VALUES (?,?,?,?,?,?,?)";
+    	String sql = "";
+    	if(detailOrder.getCustomerId() == null && detailOrder.getApiId() != null) 
+        	sql += "INSERT INTO order_detail (`name`, phone, address, delivery_id, distance, api_id) VALUES (?,?,?,?,?,?)";
+    	else
+    		sql += "INSERT INTO order_detail (`name`, phone, address, delivery_id, distance, customer_id) VALUES (?,?,?,?,?,?)";
         try {
             Connection connection = ConnectionUtil.open();
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, detailOrder.getCustomerId());
-            statement.setString(2, detailOrder.getName());
-            statement.setString(3, detailOrder.getPhone());
-            statement.setString(4, detailOrder.getAddress());
-            statement.setInt(5, detailOrder.getDeliveryId());
-            statement.setDouble(6, detailOrder.getDistance());
-            statement.setString(7, detailOrder.getApiId());
+            
+            statement.setString(1, detailOrder.getName());
+            statement.setString(2, detailOrder.getPhone());
+            statement.setString(3, detailOrder.getAddress());
+            statement.setInt(4, detailOrder.getDeliveryId());
+            statement.setDouble(5, detailOrder.getDistance());
+            
+            if(detailOrder.getCustomerId() == null && detailOrder.getApiId() != null) 
+            	statement.setString(6, detailOrder.getApiId());
+        	else
+        		statement.setInt(6, detailOrder.getCustomerId());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -30,7 +38,12 @@ public class OrderDAO {
         return false;
     }
     public Boolean edit(OrderDetail orderDetail){
-        String sql="update order_detail set `name`=?, phone=?, address=?,delivery_id=?,distance=? where customer_id = ? and api_id = ?";
+    	String sql="";
+    	if(orderDetail.getCustomerId() == null && orderDetail.getApiId() != null) 
+        	sql += "update order_detail set `name`=?, phone=?, address=?,delivery_id=?,distance=? where api_id = ?";
+    	else
+    		sql += "update order_detail set `name`=?, phone=?, address=?,delivery_id=?,distance=? where customer_id = ? ";
+        
         try {
             Connection connection = ConnectionUtil.open();
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -39,8 +52,11 @@ public class OrderDAO {
             statement.setString(3, orderDetail.getAddress());
             statement.setInt(4, orderDetail.getDeliveryId());
             statement.setDouble(5, orderDetail.getDistance());
-            statement.setInt(6,orderDetail.getCustomerId());
-            statement.setString(6,orderDetail.getApiId());
+            if(orderDetail.getCustomerId() == null && orderDetail.getApiId() != null) 
+            	statement.setString(6,orderDetail.getApiId());
+        	else
+        		statement.setInt(6,orderDetail.getCustomerId());
+            
             return statement.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();

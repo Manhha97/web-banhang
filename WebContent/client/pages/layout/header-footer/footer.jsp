@@ -90,13 +90,13 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
    
 <script type="text/javascript">
-	(function(d, s, id) {
-	 	var js, fjs = d.getElementsByTagName(s)[0];
-	 	if (d.getElementById(id)) return;
-	 	js = d.createElement(s); js.id = id;
-	 	js.src = "//connect.facebook.net/en_US/sdk.js";
-	 	fjs.parentNode.insertBefore(js, fjs);
-	 }(document, 'script', 'facebook-jssdk'));
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 	function fbLogout() {
 		FB.getLoginStatus(function(response) {
 	        if (response && response.status === 'connected') {
@@ -121,7 +121,7 @@
   			    	  url : '/customer?action=google-login',
   			     	  type : 'post',
   			     	  data : {
-  			     		  id : response.id,
+  			     		  id : "fb_"+response.id,
   			     		  email : response.email,
   			     		  name : response.name,
   			     		  type : 'facebook'
@@ -159,7 +159,7 @@ function simpleLogout(){
 			    	  url : '/customer?action=google-login',
 			     	  type : 'post',
 			     	  data : {
-			     		  id : profile.Eea,
+			     		  id : "gg_"+profile.Eea,
 			     		  email : profile.U3,
 			     		  name : profile.ig,
 			     		  type : 'google'

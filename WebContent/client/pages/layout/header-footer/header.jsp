@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="google-signin-client_id" content="443655797689-h19b37c1dpbcbuoecddeuvlpf9pi1jgl.apps.googleusercontent.com">
+
+	
     <link rel="icon" type="image/vnd.microsoft.icon" href="client/img/icon/favicon.ico"/>
     <link rel="shortcut icon" type="image/x-icon" href="client/img/icon/favicon.ico"/>
     <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css" type="text/css" media="all"/>

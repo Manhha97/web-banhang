@@ -87,6 +87,10 @@
                                     Add to my wishlist
                                 </a>
                             </p>
+                            <div class="fb-share-button" 
+							    data-href="http://localhost:8080/product?code=<%=p.getCode()%>" 
+							    data-layout="button_count">
+							 </div>
                             <strong></strong>
                         </div>
                     </div>
