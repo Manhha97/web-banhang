@@ -68,7 +68,7 @@
                                                     <br>                                                                      <strong>Thời gian giao hàng dự kiến:</strong>
                                                     dự kiến giao hàng vào Thứ tư, 30/01/2019 - không giao ngày lễ                                                                      <br>
                                                     <strong>Phí vận chuyển: </strong>
-                                                    <%=orderDetail.getAmount()* CONSTANT.PRICE_PER_KM%> &nbsp;₫
+                                                    <%=orderDetail.getDistance()* CONSTANT.PRICE_PER_KM%> &nbsp;₫
                                                     <br>
                                                 </p>
                                             </td>
@@ -107,7 +107,7 @@
                                             <td align="left" valign="top" style="padding:3px 9px">
                                                 <span><%=bd.getProduct().getPrice()%>&nbsp;₫</span>
                                             </td>
-                                            <td align="left" valign="top" style="padding:3px 9px">2</td>
+                                            <td align="left" valign="top" style="padding:3px 9px"><%=bd.getQuantity()%></td>
                                             <td align="left" valign="top" style="padding:3px 9px">
                                                 <span>0&nbsp;₫</span>
                                             </td>
@@ -129,7 +129,7 @@
                                         <tr>
                                             <td colspan="4" align="right" style="padding:5px 9px">Phí vận chuyển</td>
                                             <td align="right" style="padding:5px 9px">
-                                                <span><%=orderDetail.getAmount()* CONSTANT.PRICE_PER_KM%>&nbsp;₫</span>
+                                                <span><%=orderDetail.getDistance()* CONSTANT.PRICE_PER_KM%>&nbsp;₫</span>
                                             </td>
                                         </tr>
 
@@ -142,7 +142,7 @@
                                             <td align="right" style="padding:7px 9px">
                                                 <strong>
                                                     <big>
-                                                        <span><%=total+orderDetail.getAmount()* CONSTANT.PRICE_PER_KM%>&nbsp;₫</span>
+                                                        <span><%=total+orderDetail.getDistance()* CONSTANT.PRICE_PER_KM%>&nbsp;₫</span>
                                                     </big>
                                                 </strong>
                                             </td>
@@ -189,7 +189,7 @@
         $(document).on('click', '#sendOrder', function (e) {
             e.preventDefault();
             $.ajax({
-                url : '/order?action=send-order-mail',
+                url : '/order?action=send-order-mail&code=${bill.code}',
                 type : 'post',
                 success : function (res) {
                     if(res===true||res==='true'){

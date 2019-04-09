@@ -87,7 +87,9 @@ $(document).ready(function () {
             var cart_arr = JSON.parse(localStorage.getItem("carts"));
             if(cart_arr.length === 0){
                 content.parents('table').find('tfoot').hide();
-                content.append('<h1>Giỏ hàng trống !!</h1>')
+                content.append('<h1>Giỏ hàng trống !!</h1>');
+                $('button.btn-checkout').attr('onclick', 'location.href="/home";return false;');
+                $('button.btn-checkout').text('Tiếp tục mua hàng !');
             }else {
                 content.parents('table').find('tfoot').show();
                 var totalPrice = 0;

@@ -60,7 +60,8 @@ public class OrderController extends HttpServlet {
                     req.setAttribute("orderDetail", orderDetail);
                     req.setAttribute("billDetailList", billDetailList);
                     req.setAttribute("bill", bill);
-                    //System.out.println(new SendMail().sendMail("anhtran99xx@gmail.com",bill,orderDetail,billDetailList));
+                    //System.out.println();
+                    //new SendMail().send(customer.getEmail(),bill,orderDetail,billDetailList);
                     page = "/client/pages/order-complete.jsp";
                 }else{
                     req.setAttribute("next_page","/order?action=complete");
@@ -129,12 +130,12 @@ public class OrderController extends HttpServlet {
                 }
             }
             if(action.equalsIgnoreCase("send-order-mail")){
-                String code = "HD_0398";
+                String code = req.getParameter("code");
                 OrderDetail orderDetail = orderService.getAddressOrder(customer);
                 List<BillDetail> billDetailList = orderService.getBillDetail(code);
                 Bill bill = orderService.getBill(orderDetail.getId(), code);
                 SendMail sendMail = new SendMail();
-                if(sendMail.send("anhtran99xx@gmail.com",bill,orderDetail,billDetailList))
+                if(sendMail.send(customer.getEmail(),bill,orderDetail,billDetailList))
                     resp.getWriter().write(gson.toJson(true));
                 else resp.getWriter().write(gson.toJson(false));
 

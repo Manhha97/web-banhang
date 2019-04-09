@@ -32,7 +32,7 @@
                         <p class="phone">Điện thoại: <%=detail.getPhone()%></p>
                         <p class="phone">Phí giao hàng: <%=detail.getDistance() * CONSTANT.PRICE_PER_KM%> &nbsp;₫</p>
                         <p class="phone">Km: <%=detail.getDistance()%> &nbsp;km</p>
-                        <p class="phone">Đơn giá: <%=CONSTANT.PRICE_PER_KM%> &nbsp;₫</p>
+                        <p class="phone">Đơn giá: <%=CONSTANT.PRICE_PER_KM%> &nbsp;₫ /1Km</p>
                         <p class="action">
                             <button type="button" class="btn btn-default btn-custom3 save-order">
                                 Xác nhận đơn hàng (Đặt mua)

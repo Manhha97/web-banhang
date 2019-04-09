@@ -108,7 +108,7 @@
 	}
 	function loginfb() {
 		FB.init({ 
-		 	appId : '2034583493504662',
+		 	appId : '3128375763854616',
 		 	cookie : true,
 		 	xfbml : true,
 		 	version : 'v2.2'

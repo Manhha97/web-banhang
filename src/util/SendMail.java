@@ -25,13 +25,13 @@ public class SendMail {
                 new javax.mail.Authenticator() {
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("huychu9977@gmail.com", "*******");
+                        return new PasswordAuthentication("hahongmanh199719972@gmail.com", "manh0989876400");
                     }
                 });
         try {
             Message message = new MimeMessage(session);
             message.setHeader("Content-Type", "text/html; charset=UTF-8");
-            message.setFrom(new InternetAddress("langphan2@gmail.com"));
+            message.setFrom(new InternetAddress("hahongmanh199719972@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject("Xác nhận đơn hàng "+ bill.getCode()+" ngày "+ bill.getCreateAt());
             String body = "";
@@ -82,7 +82,7 @@ public class SendMail {
                     "                                                    <br>                                                                      <strong>Thời gian giao hàng dự kiến:</strong>\n" +
                     "                                                    dự kiến giao hàng vào Thứ tư, 30/01/2019 - không giao ngày lễ                                                                      <br>\n" +
                     "                                                    <strong>Phí vận chuyển: </strong>\n" +
-                    "                                                    "+orderDetail.getAmount()* CONSTANT.PRICE_PER_KM+" &nbsp;₫\n" +
+                    "                                                    "+orderDetail.getDistance()* CONSTANT.PRICE_PER_KM+" &nbsp;₫\n" +
                     "                                                    <br>\n" +
                     "                                                </p>\n" +
                     "                                            </td>\n" +
@@ -120,7 +120,7 @@ public class SendMail {
                     "                                        <tr>\n" +
                     "                                            <td colspan=\"4\" align=\"right\" style=\"padding:5px 9px\">Phí vận chuyển</td>\n" +
                     "                                            <td align=\"right\" style=\"padding:5px 9px\">\n" +
-                    "                                                <span>"+orderDetail.getAmount()* CONSTANT.PRICE_PER_KM+"&nbsp;₫</span>\n" +
+                    "                                                <span>"+orderDetail.getDistance()* CONSTANT.PRICE_PER_KM+"&nbsp;₫</span>\n" +
                     "                                            </td>\n" +
                     "                                        </tr>\n" +
                     "\n" +
@@ -133,7 +133,7 @@ public class SendMail {
                     "                                            <td align=\"right\" style=\"padding:7px 9px\">\n" +
                     "                                                <strong>\n" +
                     "                                                    <big>\n" +
-                    "                                                        <span>"+(total+orderDetail.getAmount()* CONSTANT.PRICE_PER_KM)+"&nbsp;₫</span>\n" +
+                    "                                                        <span>"+(total+orderDetail.getDistance()* CONSTANT.PRICE_PER_KM)+"&nbsp;₫</span>\n" +
                     "                                                    </big>\n" +
                     "                                                </strong>\n" +
                     "                                            </td>\n" +

@@ -65,7 +65,7 @@ $(document).ready(function () {
         });
 
     });
-    // calculate distance
+    // google map
     function calculateDistance() {
         var origin = 'KM9, P. Mộ Lao, Hà Đông, Hà Nội, Vietnam';
         var destination = $('#destination').val();
@@ -92,6 +92,7 @@ $(document).ready(function () {
             if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
                 $('#result').html("Đường chưa mở từ "  + origin + " đến " + destination);
             } else {
+            	//khoang cach giua 2 diem tính m
                 var distance = response.rows[0].elements[0].distance;
                 var distance_in_kilo = distance.value / 1000; // the kilom
                 //$('#in_kilo').text(distance_in_kilo.toFixed(2));

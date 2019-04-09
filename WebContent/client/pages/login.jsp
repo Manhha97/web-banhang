@@ -22,11 +22,11 @@
                             <button type="submit" class="btn btn-info btn-block">Đăng nhập</button>
                         </div>
                         <div class="form-group last" style="font-size: 20px;">
-                            <div
+                            <div 
 							  class="g-signin2" onclick="ClickLogin()"
 							  data-onsuccess="onSignIn">
 							</div>
-							<div onclick="loginfb();">login fb</div>
+							<div onclick="loginfb();" style="color: #fff;height: 35px;margin-top: -35px; border-radius: 5px;background: blue; border: 1px solid gray;float: right"><p style="padding: 7px 10px 0px 10px; cursor: pointer"><i class="fa fa-facebook-square"></i>  Login with Facebook</p></div>
                         </div>
                         
                     </form>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label class="">Mật khẩu</label>
-                            <input type="password" class="form-control login" pattern="(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" name="password" required placeholder="Nhập mật khẩu" autocomplete="off">
+                            <input type="password" class="form-control login" name="password" required placeholder="Nhập mật khẩu" autocomplete="off">
                         </div>
                        <!--  <a class="toggle-form" href="">Đã có tài khoản</a> -->
                         <p style="color: red;font-style: italic;" class="login-error"></p>

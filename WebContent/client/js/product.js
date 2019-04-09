@@ -162,7 +162,7 @@ $(document).ready(function () {
                            '<div class="product-container"><div class="left-block"><div class="product-image-container">\n' +
                            '<a class="product_img_link" href="/product?code='+p.code+'" title="Sem tristique tempus">\n' +
                            '<img class="replace-2x img-responsive" src="admin/file?action=image&name='+p.image+'" alt="Sem tristique tempus" title="Sem tristique tempus" width="220" height="200"/></a>\n' +
-                           '<a class="quick-view" href="/product?code='+p.code+'" rel=""><span>Quick view</span></a>\n' +lblSale+
+                           '\n' +lblSale+
                            '<div class="content_price"><span class="price product-price"> '+p.price+'₫ </span><meta content="1"/></div>\n' +
                            '<span class="new-box"> <span class="new-label">New</span> </span></div></div>\n' +
                            '<div class="right-block"><h5 itemprop="name"><a class="product-name" href="/product?code='+p.code+'" title="'+p.name+'"> '+p.name+'</a></h5>\n' +
